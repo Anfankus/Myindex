@@ -13,8 +13,7 @@ export default {
     }
   },
   created(){
-    this.$parent.onActive(0);
-    //this.$emit('activeList','a[href="#/index"]')
+    this.$emit('active-list',0);
   }
 }
 </script>

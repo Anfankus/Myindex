@@ -11,7 +11,7 @@ Vue.use(Router)
 const router=new Router({
   routes: [
     {
-      path: '/index',
+      path: '/',
       name: 'HelloWorld',
       component: HelloWorld
     },

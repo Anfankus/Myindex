@@ -1,16 +1,18 @@
 <template>
   <div id="app" class="container">
-    <div class="row">
-      <div class="col-12 " >
-        <nav class="nav nav-pills nav-fill border p-2 shadow-sm mb-5 bg-white rounded">
+    <div class="row" >
+      <div class="col-12" >
+        <div class="border-bottom pb-4 mb-1">
+        <nav class="nav nav-pills nav-fill border p-2 shadow-sm bg-white rounded">
             <router-link v-for="item in list" 
             :key="item.id" 
             :to="item.link"
             class="nav-item nav-link" 
             :class="{active:item.isActive}">{{item.content}}</router-link>
         </nav>
+        </div>
         <div class="p-2" >
-        <router-view/>
+        <router-view v-on:active-list="onActive"></router-view>
         </div>
       </div>
     </div>
@@ -18,8 +20,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
-
 export default {
   name: 'App',
   methods:{
@@ -36,7 +36,7 @@ export default {
       list:[
         {
           id:1,
-          link:'/index',      
+          link:'/',      
           isActive:false,
           content:'首页吧算是'
         },

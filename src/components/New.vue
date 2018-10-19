@@ -7,8 +7,7 @@
 export default {
     name:'New',
   created(){
-    this.$parent.onActive(3);
-    //this.$emit('activeList','a[href="#/index"]')
+    this.$emit('active-list',3);
   }
 }
 </script>
