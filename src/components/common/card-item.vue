@@ -5,7 +5,10 @@
   img-alt="Image"
   img-top
   class="cardItem">
-  <h4>{{title}}</h4>
+  <b-card-header>
+  <h4 v-if="href" ><a :href="this.href">{{title}}</a></h4>
+  <h4 v-else>{{title}}</h4>
+  </b-card-header>
   <b-card-body>
       <p class="card-text">{{msg}}</p>
   </b-card-body>
@@ -20,7 +23,7 @@
     <b-progress
     :variant="state?'success':'primary'"
     :value="this.process"
-    max=100
+    :max="this.max"
     show-progress
     animated></b-progress>
     </div>
@@ -57,10 +60,12 @@ export default {
     langs:{
       type:Array,
       required:true
-    }
+    },
+    href:String
   },
   data(){
     return{
+      max:100,
       langArray:this.langs.map((each,index)=>{return{id:index,type:each}})
     }
   }
@@ -68,8 +73,11 @@ export default {
 </script>
 <style lang="less" scoped>
 .cardItem{
-  @media (min-width: 800px){
-    max-width:20rem;
+  min-width:20rem;
+  flex: 0 0 auto;
+  @media (min-width: 576px){
+    margin-bottom: 15px;
+    width: 30%;
   }
   .state{
     display: flex;
